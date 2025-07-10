@@ -2,32 +2,19 @@
 using Sandbox.Extensions;
 using System.Text;
 
-var original = File.ReadAllText("C:\\Users\\Eris\\Desktop\\Saida.txt", encoding: Encoding.Latin1);
-//var original = File.ReadAllText("C:\\Users\\Eris\\Desktop\\G9488077_unidesp.TXT", encoding: Encoding.Latin1);
+const string sourcePath = """C:\Users\Eris\Desktop\Pagamento Lote GareDr\""";
 
-//Console.WriteLine("Original: " + original);
+// Lista de arquivos para teste
+// G9488077_unidesp.TXT
+// G9399903.TXT
+// Entrada.txt
+// Saida.txt
 
-//string codificada = CryptHandler.Codificar(original);
-//Console.WriteLine("Codificada: " + codificada);
+var gare = ReadAndExtractGare(sourcePath + "Entrada.txt");
 
-string decodificada = CryptHandler.Decodificar(original);
-//Console.WriteLine("Decodificada: " + decodificada);
-
-//File.WriteAllText("C:\\Users\\Eris\\Downloads\\decodificado4.txt", decodificada, Encoding.ASCII);
-
-//string caminho = "C:\\Users\\Eris\\Downloads\\decodificado.txt";
-//var linhas = File.ReadAllLines(caminho, Encoding.Latin1);
-
-//var texto = string.Join("", linhas);
-
-var gare = GareParser.ExtrairGareDr(decodificada);
 gare.Show();
 
-var texto = GareFactory.Montar(gare);
-var textoCriptografado = CryptHandler.Codificar(texto);
-string desktop = "C:\\Users\\Eris\\Desktop\\Saida.txt";
-File.WriteAllText(desktop, textoCriptografado, Encoding.Latin1);
-//File.WriteAllText(desktop, texto, Encoding.Latin1);
+WriteEncryptedGare(gare, sourcePath + "Saida.txt");
 
 static GareDto ReadAndExtractGare(string path)
 {
@@ -37,7 +24,6 @@ static GareDto ReadAndExtractGare(string path)
     return GareParser.ExtrairGareDr(decodedContent);
 }
 
-// Recebe o objeto GARE/DR, reconstrói o layout, criptografa e salva no disco
 static void WriteEncryptedGare(GareDto gare, string path)
 {
     var rebuiltContent = GareFactory.Montar(gare);
