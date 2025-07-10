@@ -10,7 +10,13 @@ const string sourcePath = """C:\Users\Eris\Desktop\Pagamento Lote GareDr\""";
 // Entrada.txt
 // Saida.txt
 
-var gare = ReadAndExtractGare(sourcePath + "Entrada.txt");
+/// Padrão do nome do arquivo: 
+/// GSSSSSNN.TXT onde:
+/// G – Identificação do tipo de arquivo de pagamento (G = GARE)
+/// S – Número do SSP do despachante. Sempre com 5 posições
+/// N – Número sequencial para evitar duplicidade (1)
+
+var gare = ReadAndExtractGare(sourcePath + "G9399903.txt");
 
 gare.Show();
 
