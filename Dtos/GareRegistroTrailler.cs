@@ -1,6 +1,4 @@
-﻿using Microsoft.Win32;
-
-namespace Sandbox.Dtos;
+﻿namespace Sandbox.Dtos;
 
 public class GareRegistroTrailler
 {

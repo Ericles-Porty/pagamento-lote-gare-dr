@@ -2,8 +2,12 @@
 
 public static class CryptHandler
 {
-    // Função para codificar (somar 127 aos caracteres)
-    public static string Codificar(string input)
+    /// <summary>
+    /// Função para codificar uma string usando a cifra de César (adicionando 127 aos caracteres)
+    /// </summary>
+    /// <param name="input"> A string a ser codificada</param>
+    /// <returns> A string codificada</returns>
+    public static string CodificarCifraDeCesar(string input)
     {
         char[] resultado = new char[input.Length];
         for (int i = 0; i < input.Length; i++)
@@ -13,8 +17,12 @@ public static class CryptHandler
         return new string(resultado);
     }
 
-    // Função para decodificar (subtrair 127 dos caracteres)
-    public static string Decodificar(string input)
+    /// <summary>
+    /// Função para decodificar uma string usando a cifra de César (subtraindo 127 dos caracteres)
+    /// </summary>
+    /// <param name="input"> A string a ser decodificada</param>
+    /// <returns> A string decodificada</returns>
+    public static string DecodificarCifraDeCesar(string input)
     {
         char[] resultado = new char[input.Length];
         for (int i = 0; i < input.Length; i++)
